@@ -1,79 +1,144 @@
+/* Base */
+:root {
+  --brand: #0077B5;
+  --ink: #333;
+  --ink-2: #1d2a40;
+  --muted: #666;
+  --panel: #ffffff;
+  --panel-border: #d5dce3;
+  --panel-alt: #f9fafc;
+}
+
+* { box-sizing: border-box; }
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    background-image: url('images/Meeting Background.jpg');
-    background-size: cover;
-    background-position: center;
-    color: #333;
-    text-align: center;
-    padding: 50px;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4 url("images/Meeting Background.jpg") center/cover no-repeat fixed;
+  color: var(--ink);
+  text-align: center; /* centers the container block; inner text reset below */
+  padding: 40px;
+  margin: 0;
 }
 
 img {
-    border-radius: 12px;
-    width: 100%;
-    height: auto;
-    max-height: 250px;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: 3px solid #0077B5;
+  border-radius: 12px;
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid var(--brand);
 }
 
+/* Container */
 .container {
-    background: white;
-    padding: 40px;
-    max-width: 650px;
-    margin: 0 auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: var(--panel);
+  padding: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: left; /* override body centering */
 }
 
+/* Headings & copy */
 h1 {
-    margin-bottom: 10px;
-    color: #0077B5;
+  margin: 0 0 10px;
+  color: var(--brand);
 }
 
-h2 {
-    color: #444;
-    margin-top: 30px;
+.container h2,
+.container h3 {
+  margin-top: 2rem;
+  color: var(--ink-2);
 }
 
+.container p,
 p {
-    line-height: 1.6;
+  line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
+/* Lists */
 ul {
-    text-align: left;
-    margin: 20px auto;
-    display: inline-block;
-    padding: 0;
-    list-style: none;
+  margin: 20px 0 1.2rem 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.4rem;
 }
 
 ul li::before {
-    content: "✔ ";
-    color: #0077B5;
-    font-weight: bold;
+  content: "✔";
+  color: var(--brand);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
 }
 
+ol {
+  margin: 0 0 1.2rem 1.5rem;
+}
+
+ol li { margin-bottom: 0.5rem; }
+
+/* Table (value grid) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  background-color: var(--panel-alt);
+  border: 1px solid var(--panel-border);
+  border-radius: 6px;
+  overflow: hidden; /* keeps header radius */
+}
+
+thead {
+  background-color: var(--ink-2);
+  color: #fff;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f1f5f9;
+}
+
+/* Buttons (unify: anchor with .button class) */
 a.button {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 12px 28px;
-    background-color: #0077B5;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 6px;
-    transition: background 0.3s;
+  display: inline-block;
+  background-color: var(--ink-2);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  margin: 1rem 0.8rem 0 0;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.02s ease;
 }
 
-a.button:hover {
-    background-color: #005582;
-}
+a.button:hover { background-color: #31435e; }
+a.button:active { transform: translateY(1px); }
 
+/* Footer */
 footer {
-    margin-top: 40px;
-    font-size: 0.9em;
-    color: #666;
+  margin-top: 40px;
+  font-size: 0.9em;
+  color: var(--muted);
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  body { padding: 20px; }
+  .container { padding: 20px; }
+  th, td { padding: 0.65rem 0.75rem; }
 }
